@@ -3,4 +3,59 @@ import java.util.Scanner;
 public class Blackjack{
 
   public static void main(String[] args){
+    String dealerCard1 = Deck();
+    String dealerCard2 = Deck();
+    String playerCard1 = Deck();
+    String playerCard2 = Deck();
+    int playerSum = 0;
+    int dealerSum = 0;
     
+    System.out.println("Dealer's Hand is " + dealerCard1 + " and Unknown");
+    System.out.println("Your Hand is " + playerCard1 + " and " + playerCard2);
+  
+  }
+  
+  public static String Deck(){
+    int drawCard = (int)(13 * Math.Random() + 1);
+    switch(drawCard){
+      case 1:
+        return "A";
+        break;
+      case 2:
+        return "2";
+        break;
+      case 3:
+        return "3";
+        break;
+      case 4:
+        return "4";
+        break;
+      case 5:
+        return "5";
+        break;
+      case 6:
+        return "6";
+        break;
+      case 7:
+        return "7";
+        break;
+      case 8:
+        return "8";
+        break;
+      case 9:
+        return "9";
+        break;
+      case 10:
+        return "10";
+        break;
+      case 11:
+        return "J";
+        break;
+      case 12:
+        return "Q";
+        break;
+      case 13:
+        return "K";
+        break;
+    }
+  }
