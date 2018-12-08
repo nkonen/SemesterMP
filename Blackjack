@@ -1,61 +1,162 @@
 import java.util.Scanner;
 
-public class Blackjack{
+public class Blackjack {
+    
+  private static int playerSum;
+  private static int dealerSum;
 
   public static void main(String[] args){
+    Scanner Jithin = new Scanner(System.in);
+    
     String dealerCard1 = Deck();
     String dealerCard2 = Deck();
     String playerCard1 = Deck();
     String playerCard2 = Deck();
-    int playerSum = 0;
-    int dealerSum = 0;
     
     System.out.println("Dealer's Hand is " + dealerCard1 + " and Unknown");
     System.out.println("Your Hand is " + playerCard1 + " and " + playerCard2);
-  
+    
+    convertCardDealer(dealerCard1);
+    convertCardDealer(dealerCard2);
+    convertCardPlayer(playerCard1);
+    convertCardPlayer(playerCard2);
+    
+    System.out.println("Your sum is " + playerSum);
+    
+    if(playerSum == 21){
+        System.out.println("You Win!");
+    }
+    else if(dealerSum == 21){
+        System.out.println("You Lose!");
+    }
+    else{
+        System.out.println("Would you like to hit or stand?");
+        String response = Jithin.nextLine();
+        if(response.equals("Hit")){
+            
+        }
+    }
   }
   
   public static String Deck(){
-    int drawCard = (int)(13 * Math.Random() + 1);
+    int drawCard = (int)(13 * Math.random() + 1);
     switch(drawCard){
       case 1:
         return "A";
-        break;
       case 2:
         return "2";
-        break;
       case 3:
         return "3";
-        break;
       case 4:
         return "4";
-        break;
       case 5:
         return "5";
-        break;
       case 6:
         return "6";
-        break;
       case 7:
         return "7";
-        break;
       case 8:
         return "8";
-        break;
       case 9:
         return "9";
-        break;
       case 10:
         return "10";
-        break;
       case 11:
         return "J";
-        break;
       case 12:
         return "Q";
-        break;
       case 13:
         return "K";
-        break;
     }
+    return "Error";
   }
+  
+  public static void convertCardDealer(String n){
+      switch(n){
+          case "A":
+              dealerSum += 11;
+              break;
+          case "2":
+              dealerSum += 2;
+              break;
+          case "3":
+              dealerSum += 3;
+              break;
+          case "4":
+              dealerSum += 4;
+              break;
+          case "5":
+              dealerSum += 5;
+              break;
+          case "6":
+              dealerSum += 6;
+              break;
+          case "7":
+              dealerSum += 7;
+              break;
+          case "8":
+              dealerSum += 8;
+              break;
+          case "9":
+              dealerSum += 9;
+              break;
+          case "10":
+              dealerSum += 10;
+              break;
+          case "J":
+              dealerSum += 10;
+              break;
+          case "Q":
+              dealerSum += 10;
+              break;
+          case "K":
+              dealerSum += 10;
+              break;
+      }
+  }
+  
+  public static void convertCardPlayer(String n){
+      switch(n){
+          case "A":
+              playerSum += 11;
+              break;
+          case "2":
+              playerSum += 2;
+              break;
+          case "3":
+              playerSum += 3;
+              break;
+          case "4":
+              playerSum += 4;
+              break;
+          case "5":
+              playerSum += 5;
+              break;
+          case "6":
+              playerSum += 6;
+              break;
+          case "7":
+              playerSum += 7;
+              break;
+          case "8":
+              playerSum += 8;
+              break;
+          case "9":
+              playerSum += 9;
+              break;
+          case "10":
+              playerSum += 10;
+              break;
+          case "J":
+              playerSum += 10;
+              break;
+          case "Q":
+              playerSum += 10;
+              break;
+          case "K":
+              playerSum += 10;
+              break;
+      }
+  }
+  
+}
