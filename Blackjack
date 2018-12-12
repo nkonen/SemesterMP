@@ -1,17 +1,28 @@
+package blackjack;
+
 import java.util.Scanner;
 
 public class Blackjack {
     
   private static int playerSum;
   private static int dealerSum;
+  
+  private static String nextCard;
+  private static int nextCardValue;
+  
+  private static String dealerCard1;
+  private static String dealerCard2;
+  private static String playerCard1;
+  private static String playerCard2;
+  
 
   public static void main(String[] args){
     Scanner Jithin = new Scanner(System.in);
     
-    String dealerCard1 = Deck();
-    String dealerCard2 = Deck();
-    String playerCard1 = Deck();
-    String playerCard2 = Deck();
+    dealerCard1 = Deck();
+    dealerCard2 = Deck();
+    playerCard1 = Deck();
+    playerCard2 = Deck();
     
     System.out.println("Dealer's Hand is " + dealerCard1 + " and Unknown");
     System.out.println("Your Hand is " + playerCard1 + " and " + playerCard2);
@@ -32,7 +43,25 @@ public class Blackjack {
     else{
         System.out.println("Would you like to hit or stand?");
         String response = Jithin.nextLine();
-        if(response.equals("Hit")){
+        while(response.equals("Hit")){
+            nextCard = Deck();
+            System.out.println("You drew a " + nextCard + "!");
+            convertCard(nextCard);
+            playerSum += nextCardValue;
+            System.out.println("Your sum is " + playerSum);
+            if(playerSum == 21){
+                System.out.println("You Win!");
+                break;
+            }
+            else if(playerSum > 21){
+                System.out.println("You Bust!");
+                break;
+            }
+            else{
+                System.out.println("Would you like to hit or stand?");
+                response = Jithin.nextLine();
+            }
+            
             
         }
     }
@@ -74,7 +103,12 @@ public class Blackjack {
   public static void convertCardDealer(String n){
       switch(n){
           case "A":
-              dealerSum += 11;
+              if(dealerSum <= 10){
+                  dealerSum += 11;
+              }
+              else{
+                  dealerSum += 1;
+              }
               break;
           case "2":
               dealerSum += 2;
@@ -118,7 +152,12 @@ public class Blackjack {
   public static void convertCardPlayer(String n){
       switch(n){
           case "A":
-              playerSum += 11;
+              if(playerSum <= 10){
+                  playerSum += 11;
+              }
+              else{
+                  playerSum += 1;
+              }
               break;
           case "2":
               playerSum += 2;
@@ -159,4 +198,52 @@ public class Blackjack {
       }
   }
   
+  public static void convertCard(String n){
+      switch(n){
+          case "A":
+              if(nextCardValue <= 10){
+                  nextCardValue = 11;
+              }
+              else{
+                  nextCardValue += 1;
+              }
+              break;
+          case "2":
+              nextCardValue += 2;
+              break;
+          case "3":
+              nextCardValue += 3;
+              break;
+          case "4":
+              nextCardValue += 4;
+              break;
+          case "5":
+              nextCardValue += 5;
+              break;
+          case "6":
+              nextCardValue += 6;
+              break;
+          case "7":
+              nextCardValue += 7;
+              break;
+          case "8":
+              nextCardValue += 8;
+              break;
+          case "9":
+              nextCardValue += 9;
+              break;
+          case "10":
+              nextCardValue += 10;
+              break;
+          case "J":
+              nextCardValue += 10;
+              break;
+          case "Q":
+              nextCardValue += 10;
+              break;
+          case "K":
+              nextCardValue += 10;
+              break;
+      }
+  }
 }
